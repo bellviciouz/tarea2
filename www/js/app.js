@@ -1,13 +1,14 @@
 // Ionic Starter App
+var db;
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services' , 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$cordovaSQLite) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,6 +21,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+    
+    
+    
+    if(windows.cordova)
+    {
+        db=$codovaSQLite.openDB("restaurante.db");
+    }
+    else
+    {
+        db=window.openDatabase("restaurante.db", "1", "app1", -1 );
+    }
+    
+    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS menu (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre varchar(255), descripcion varchar(255), precio varchar(255))");
+    
+    
+    
+    
+    
   });
 })
 
