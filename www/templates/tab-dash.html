@@ -1,6 +1,57 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <div class="list card">
+  
+  
+  
+    <form name="form1" novalidate>
+    <div class="list">
+        <label class="item item-input">
+            <span class="input-label">Nombre</span>
+            <input type="text" name="nombre" ng-model="menu.nombre" required>
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Descripcion</span>
+            <input type="text" name="descripcion" ng-model="menu.descripcion" required>
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Precio</span>
+            <input type="text" name="precio" ng-model="menu.precio" required>
+        </label>
+    </div>
+    
+    <div class="padding">
+        <p ng-show="form1.nombre.$error.required"> Escriba el nombre</p>
+        <p ng-show="form1.descripcion.$error.required"> Escriba la descripcion</p>
+        <p ng-show="form1.precio.$error.required"> Escriba el precio</p>
+        <p>{{ statusMessage }}</p>
+    </div>
+    
+  
+    
+    <button class= "button button-full button-positive"   ng-disabled="form1.$invalid" ng-click="guardar(menu)">
+            Guardar
+        </button>
+        
+        
+    </form>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   <!-- <div class="list card">
       <div class="item item-divider">Recent Updates</div>
       <div class="item item-body">
         <div>
@@ -24,5 +75,6 @@
         </div>
       </div>
     </div>
+    -->
   </ion-content>
 </ion-view>

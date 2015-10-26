@@ -24,9 +24,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services' , 
     
     
     
-    if(windows.cordova)
+    if(window.cordova)
     {
-        db=$codovaSQLite.openDB("restaurante.db");
+        db=$cordovaSQLite.openDB("restaurante.db");
     }
     else
     {

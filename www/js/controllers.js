@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
     
     
     
-   $scope.guardar = function(persona) {
+   $scope.guardar = function(menu) {
 
 
   
@@ -67,7 +67,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+ // $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {
