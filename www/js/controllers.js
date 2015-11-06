@@ -66,8 +66,22 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
- // $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $cordovaSQLite) {
+  //$scope.chat = Chats.get($stateParams.chatId);
+ $scope.menu = Chats.get($stateParams.chatId);
+ 
+ 
+   $scope.guardar=function(menu){
+       $cordovaSQLite.execute(db, 'UPDATE menu SET nombre=?, descripcion=?,precio=? WHERE id=?', [menu.nombre,menu.descripcion,menu.precio,menu.id])
+        .then(function(result) {
+            $scope.statusMessage = "Registro guardado";
+        }, function(error) {
+            $scope.statusMessage = "Error: " + error.message;
+        })
+  }
+ 
+ 
+ 
 })
 
 .controller('AccountCtrl', function($scope) {

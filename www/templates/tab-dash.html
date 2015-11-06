@@ -25,7 +25,7 @@
         <p ng-show="form1.precio.$error.required"> Escriba el precio</p>
         <p>{{ statusMessage }}</p>
     </div>
-    
+    <input type="hidden" name="id" ng-model="menu[0].id">
   
     
     <button class= "button button-full button-positive"   ng-disabled="form1.$invalid" ng-click="guardar(menu)">

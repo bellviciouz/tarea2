@@ -4,11 +4,37 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{chat.name}}">
+<ion-view view-title="{{menu[0].nombre}}">
   <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lastText}}
-    </p>
+     <form name="form1" novalidate>
+    <div class="list">
+        <label class="item item-input">
+            <span class="input-label">Nombre</span>
+            <input type="text" name="nombre" ng-model="menu[0].nombre" required>
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Descripcion</span>
+            <input type="text" name="descripcion" ng-model="menu[0].descripcion" required>
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Precio</span>
+            <input type="text" name="precio" ng-model="menu[0].precio" required>
+        </label>
+    </div>
+    
+    <div class="padding">
+        <p ng-show="form1.nombre.$error.required"> Escriba el nombre</p>
+        <p ng-show="form1.descripcion.$error.required"> Escriba la descripcion</p>
+        <p ng-show="form1.precio.$error.required"> Escriba el precio</p>
+    </div>
+    
+  <input type="hidden" name="id" ng-model="menu[0].id">
+    
+    <button class= "button button-full button-positive"   ng-disabled="form1.$invalid" ng-click="guardar(menu[0])">
+            Guardar
+        </button>
+        <p>{{ statusMessage }}</p>
+        
+    </form>
   </ion-content>
 </ion-view>
